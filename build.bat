@@ -4,22 +4,11 @@ mkdir deps
 cd deps
 mkdir skia
 cd skia
-powershell -command "wget -UseBasicParsing -OutFile skia.zip https://github.com/aseprite/skia/releases/download/m96-2f1f21b8a9/Skia-Windows-Release-x64.zip"
+powershell -command "wget -UseBasicParsing -OutFile skia.zip https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Windows-Release-x64.zip
 powershell -command "Expand-Archive -Path .\skia.zip -DestinationPath ."
 
 echo "switch to VS dev cmd"
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat" -arch=x64
-
-echo "build ninja"
-cd C:\
-git clone https://github.com/ninja-build/ninja.git
-cd .\ninja\
-git fetch --tags
-git checkout v1.10.1
-mkdir build-cmake
-cd build-cmake
-cmake ..
-cmake --build .
+call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\VsDevCmd.bat" -arch=x64
 
 echo "build aseprite"
 cd C:\
@@ -27,7 +16,7 @@ git clone --recursive https://github.com/aseprite/aseprite.git
 cd aseprite
 git fetch --tags
 git pull
-git checkout v1.2.34.1
+git checkout v1.3.13
 git submodule update --init --recursive
 mkdir build
 cd build
